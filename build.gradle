@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'exercise'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task run(type: JavaExec){
+    if(project.hasProperty('size')){
+        args(size)
+    }
+
+    if(project.hasProperty('steps')){
+        args(steps)
+    }
+
+    classpath sourceSets.main.runtimeClasspath
+    main = 'com.Main'
+}
